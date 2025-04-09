@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_portfolio/constants/colors.dart';
 import 'package:test_portfolio/constants/nav_items.dart';
+import 'package:test_portfolio/widgets/header_desktop.dart';
+import 'package:test_portfolio/widgets/site_logo.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,44 +23,20 @@ class _HomePageState extends State<HomePage> {
           scrollDirection: Axis.vertical,
           children: [
             // MAIN
+            // const HeaderDesktop(),
+
             Container(
-                height: 60,
-                margin:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                width: double.maxFinite,
-                decoration: BoxDecoration(
-                    gradient: const LinearGradient(colors: [
-                      Colors.transparent,
-                      CustomColor.secondaryColor
-                    ]),
-                    borderRadius: BorderRadius.circular(100)),
-                child: Row(
-                  children: [
-                    const Text(
-                      'Piotr Jankiewicz',
-                      style: TextStyle(
-                          color: CustomColor.secondaryColor,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20,
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                    const Spacer(),
-                    for (int i = 0; i < navTitles.length; i++)
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20),
-                        child: TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              navTitles[i],
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16),
-                            )),
-                      ),
-                  ],
-                )),
+              height: 50,
+              margin: const EdgeInsets.fromLTRB(40, 5, 20, 5),
+              child: Row(
+                children: [
+                  SiteLogo(onTap: () {}),
+                  const Spacer(),
+                  IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
+                ],
+              ),
+            ),
+
             // SKILLS
             Container(
               height: 500,
