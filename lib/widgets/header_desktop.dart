@@ -3,6 +3,7 @@ import 'package:test_portfolio/widgets/site_logo.dart';
 
 import '../constants/colors.dart';
 import '../constants/nav_items.dart';
+import '../styles/style.dart';
 
 class HeaderDesktop extends StatelessWidget {
   const HeaderDesktop({super.key});
@@ -13,10 +14,7 @@ class HeaderDesktop extends StatelessWidget {
         height: 60,
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         width: double.maxFinite,
-        decoration: BoxDecoration(
-            gradient: const LinearGradient(
-                colors: [Colors.transparent, CustomColor.secondaryColor]),
-            borderRadius: BorderRadius.circular(100)),
+        decoration: kHeaderDecoration,
         child: Row(
           children: [
             SiteLogo(onTap: () {}),

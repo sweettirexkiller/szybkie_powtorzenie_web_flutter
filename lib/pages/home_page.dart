@@ -7,6 +7,9 @@ import 'package:test_portfolio/constants/nav_items.dart';
 import 'package:test_portfolio/widgets/header_desktop.dart';
 import 'package:test_portfolio/widgets/site_logo.dart';
 
+import '../styles/style.dart';
+import '../widgets/header_mobile.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -24,17 +27,9 @@ class _HomePageState extends State<HomePage> {
           children: [
             // MAIN
             // const HeaderDesktop(),
-
-            Container(
-              height: 50,
-              margin: const EdgeInsets.fromLTRB(40, 5, 20, 5),
-              child: Row(
-                children: [
-                  SiteLogo(onTap: () {}),
-                  const Spacer(),
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
-                ],
-              ),
+            HeaderMobile(
+              onLogoTap: null,
+              onMenuTap: (){},
             ),
 
             // SKILLS
