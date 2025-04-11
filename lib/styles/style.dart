@@ -5,9 +5,9 @@ import '../constants/colors.dart';
 BoxDecoration kHeaderDecoration = BoxDecoration(
     gradient: const LinearGradient(
         colors: [
-          Colors.transparent,
+          CustomColor.primaryColor,
           CustomColor.secondaryColor
         ]
     ),
-    borderRadius: BorderRadius.circular(100)
+    borderRadius: BorderRadius.circular(10)
 );

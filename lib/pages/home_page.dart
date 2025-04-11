@@ -2,9 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:test_portfolio/constants/colors.dart';
 import 'package:test_portfolio/constants/skill_items.dart';
+import 'package:test_portfolio/utils/project_utils.dart';
+import 'package:test_portfolio/widgets/custom_textfield.dart';
 import 'package:test_portfolio/widgets/header_desktop.dart';
 import 'package:test_portfolio/widgets/main_desktop.dart';
 import 'package:test_portfolio/widgets/skills_desktop.dart';
@@ -13,6 +16,8 @@ import '../constants/size.dart';
 import '../widgets/drawer_mobile.dart';
 import '../widgets/header_mobile.dart';
 import '../widgets/main_mobile.dart';
+import '../widgets/project_card.dart';
+import '../widgets/projects_section.dart';
 import '../widgets/skills_mobile.dart';
 
 class HomePage extends StatefulWidget {
@@ -43,131 +48,87 @@ class _HomePageState extends State<HomePage> {
               scrollDirection: Axis.vertical,
               children: [
                 // MAIN
-                // if (constraints.maxWidth >= kMinDesktopWidth)
-                //   const HeaderDesktop()
-                // else
-                //   HeaderMobile(
-                //     onLogoTap: () {},
-                //     onMenuTap: () {
-                //       scaffoldKey.currentState?.openEndDrawer();
-                //     },
-                //   ),
+                if (constraints.maxWidth >= kMinDesktopWidth)
+                  const HeaderDesktop()
+                else
+                  HeaderMobile(
+                    onLogoTap: () {},
+                    onMenuTap: () {
+                      scaffoldKey.currentState?.openEndDrawer();
+                    },
+                  ),
                 //
                 // // const MainDesktop(),
                 // if (constraints.maxWidth >= kMinDesktopWidth)
                 //   const MainDesktop()
                 // else
                 //   const MainMobile(),
-                //
                 // // SKILLS
                 // if(constraints.maxWidth >= kMinDesktopWidth)
                 //   const SkillsDesktop()
                 // else
                 //   const SkillsMobile(),
-
-                // PROJECTS
+                //
+                // // PROJECTS
+                // const ProjectsSection(),
+                // // CONTACT
                 Container(
-                    width: screenWidth,
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
+                    color: Colors.blueGrey,
                     child: Column(
                       children: [
-                        // work projects title
                         const Text(
-                          "Work projects",
+                          "Get in touch",
                           style: TextStyle(
-                              fontSize: 24,
                               fontWeight: FontWeight.bold,
-                              color: Colors.blueGrey),
+                              fontSize: 24,
+                              color: Colors.white),
                         ),
-                        // work project cards
-                        Container(
-                          clipBehavior: Clip.antiAlias,
-                          height: 280,
-                          width: 250,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Colors.blueGrey.shade200,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
+                        const SizedBox(height: 50),
+                        ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 700.0),
+                          child: const Row(
                             children: [
-
-                              Image.asset(
-                                "projects/02.png",
-                                height: 140,
-                                width: 250,
-                                fit: BoxFit.cover,
+                              Flexible(
+                                  child: CustomTextfield(
+                                hintText: "Your Name",
+                              )),
+                              SizedBox(
+                                width: 15,
                               ),
-                              const Padding(
-                                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                                child: Text("Title",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w600)),
-                              ),
-                              // subtitle
-                              const Padding(
-                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                child: Text("subTitle",
-                                    style: TextStyle(
-                                        fontSize: 12, color: Colors.white)),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                child: Text("About the poject description",
-                                    style: TextStyle(fontSize: 10)),
-                              ),
-
-                              Spacer(),
-                              // footer
-                              Container(
-                                color: Colors.grey,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 10),
-                                child: Row(
-                                  children: [
-                                    const Text(
-                                      "Available on:",
-                                      style: TextStyle(
-                                          color: CustomColor.secondaryColor,
-                                          fontSize: 10),
-                                    ),
-                                    const Spacer(),
-                                    Padding(
-                                        padding: const EdgeInsets.only(left: 6),
-                                        child: InkWell(
-                                          onTap: (){},
-                                          child: Image.asset("android_icon.png",
-                                              width: 17),
-                                        )),
-                                    Padding(
-                                        padding: const EdgeInsets.only(left: 6),
-                                        child: InkWell(
-                                          onTap: (){},
-                                          child: Image.asset("ios_icon.png",
-                                              width: 19),
-                                        )),
-                                    Padding(
-                                        padding: const EdgeInsets.only(left: 6),
-                                        child: InkWell(
-                                          onTap: (){},
-                                          child: Image.asset("web_icon.png",
-                                              width: 17),
-                                        )),
-                                  ],
-                                ),
-                              )
+                              Flexible(
+                                  child: CustomTextfield(
+                                hintText: "Your email",
+                              )),
                             ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 700.0),
+                          child: const CustomTextfield(
+                            hintText: "Your message",
+                            maxLines: 20,
+                          ),
+                        ),
+
+                        // send button
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 700.0),
+                          child: SizedBox(
+                            width: double.maxFinite,
+                            child: ElevatedButton(
+                                onPressed: () {},
+                                child: const Text("Get in touch")),
                           ),
                         ),
                       ],
                     )),
-                // CONTACT
-                Container(
-                  height: 500,
-                  width: double.maxFinite,
-                  color: Colors.blueGrey,
-                ),
                 // FOOTER
                 Container(
                   height: 500,
