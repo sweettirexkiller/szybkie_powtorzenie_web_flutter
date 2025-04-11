@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:test_portfolio/constants/size.dart';
 import 'package:test_portfolio/widgets/custom_textfield.dart';
 
 class ContactSection extends StatelessWidget {
@@ -23,21 +23,15 @@ class ContactSection extends StatelessWidget {
             ),
             const SizedBox(height: 50),
             ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 700.0),
-              child: const Row(
-                children: [
-                  Flexible(
-                      child: CustomTextfield(
-                        hintText: "Your Name",
-                      )),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Flexible(
-                      child: CustomTextfield(
-                        hintText: "Your email",
-                      )),
-                ],
+              constraints: const BoxConstraints(maxWidth: 700.0, maxHeight: 100),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  if (constraints.maxWidth < kMinDesktopWidth) {
+                    return buildNameEmailFieldMobile();
+                  } else {
+                    return buildNameEmailFieldDesktop();
+                  }
+                },
               ),
             ),
             const SizedBox(
@@ -60,8 +54,7 @@ class ContactSection extends StatelessWidget {
               child: SizedBox(
                 width: double.maxFinite,
                 child: ElevatedButton(
-                    onPressed: () {},
-                    child: const Text("Get in touch")),
+                    onPressed: () {}, child: const Text("Get in touch")),
               ),
             ),
 
@@ -69,8 +62,7 @@ class ContactSection extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: ConstrainedBox(
-                  constraints:
-                  const BoxConstraints(maxWidth: 400.0),
+                  constraints: const BoxConstraints(maxWidth: 400.0),
                   child: const Divider()),
             ),
 
@@ -80,8 +72,7 @@ class ContactSection extends StatelessWidget {
               alignment: WrapAlignment.center,
               children: [
                 InkWell(
-                    onTap: () {},
-                    child: Image.asset("github.png", width: 28)),
+                    onTap: () {}, child: Image.asset("github.png", width: 28)),
                 InkWell(
                     onTap: () {},
                     child: Image.asset("linkedin.png", width: 28)),
@@ -95,5 +86,41 @@ class ContactSection extends StatelessWidget {
             )
           ],
         ));
+  }
+
+  Row buildNameEmailFieldDesktop() {
+    return const Row(
+      children: [
+        Flexible(
+            child: CustomTextfield(
+          hintText: "Your Name",
+        )),
+        SizedBox(
+          width: 15,
+        ),
+        Flexible(
+            child: CustomTextfield(
+          hintText: "Your email",
+        )),
+      ],
+    );
+  }
+
+  Column buildNameEmailFieldMobile() {
+    return const Column(
+      children: [
+        Flexible(
+            child: CustomTextfield(
+          hintText: "Your Name",
+        )),
+        SizedBox(
+          height: 15,
+        ),
+        Flexible(
+            child: CustomTextfield(
+          hintText: "Your email",
+        )),
+      ],
+    );
   }
 }

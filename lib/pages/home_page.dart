@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                 // PROJECTS
                 const ProjectsSection(),
                 // CONTACT
-                ContactSection(),
+                const ContactSection(),
                 // FOOTER
                 Container(
                   height: 500,
