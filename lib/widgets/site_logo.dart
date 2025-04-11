@@ -9,13 +9,16 @@ class SiteLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: const Text(
-        'PJ',
-        style: TextStyle(
-          color: CustomColor.secondaryColor,
-          fontWeight: FontWeight.w500,
-          fontSize: 20,
-          decoration: TextDecoration.underline,
+      child: const Padding(
+        padding: EdgeInsets.only(left: 20),
+        child: Text(
+          'PJ',
+          style: TextStyle(
+            color: CustomColor.secondaryColor,
+            fontWeight: FontWeight.w500,
+            fontSize: 20,
+            decoration: TextDecoration.underline,
+          ),
         ),
       ),
     );
