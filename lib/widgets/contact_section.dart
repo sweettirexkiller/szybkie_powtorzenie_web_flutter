@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:test_portfolio/constants/size.dart';
+import 'package:test_portfolio/constants/sns_links.dart';
 import 'package:test_portfolio/widgets/custom_textfield.dart';
+import 'dart:js' as js;
 
 class ContactSection extends StatelessWidget {
   const ContactSection({
@@ -23,7 +25,8 @@ class ContactSection extends StatelessWidget {
             ),
             const SizedBox(height: 50),
             ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 700.0, maxHeight: 100),
+              constraints: const BoxConstraints(
+                  maxWidth: 700.0, maxHeight: 100),
               child: LayoutBuilder(
                 builder: (context, constraints) {
                   if (constraints.maxWidth < kMinDesktopWidth) {
@@ -72,7 +75,9 @@ class ContactSection extends StatelessWidget {
               alignment: WrapAlignment.center,
               children: [
                 InkWell(
-                    onTap: () {}, child: Image.asset("github.png", width: 28)),
+                    onTap: () {
+                      js.context.callMethod("open", [SnsLinks.github]);
+                    }, child: Image.asset("github.png", width: 28)),
                 InkWell(
                     onTap: () {},
                     child: Image.asset("linkedin.png", width: 28)),
@@ -93,15 +98,15 @@ class ContactSection extends StatelessWidget {
       children: [
         Flexible(
             child: CustomTextfield(
-          hintText: "Your Name",
-        )),
+              hintText: "Your Name",
+            )),
         SizedBox(
           width: 15,
         ),
         Flexible(
             child: CustomTextfield(
-          hintText: "Your email",
-        )),
+              hintText: "Your email",
+            )),
       ],
     );
   }
@@ -111,15 +116,15 @@ class ContactSection extends StatelessWidget {
       children: [
         Flexible(
             child: CustomTextfield(
-          hintText: "Your Name",
-        )),
+              hintText: "Your Name",
+            )),
         SizedBox(
           height: 15,
         ),
         Flexible(
             child: CustomTextfield(
-          hintText: "Your email",
-        )),
+              hintText: "Your email",
+            )),
       ],
     );
   }
