@@ -13,6 +13,7 @@ import 'package:test_portfolio/widgets/main_desktop.dart';
 import 'package:test_portfolio/widgets/skills_desktop.dart';
 
 import '../constants/size.dart';
+import '../widgets/contact_section.dart';
 import '../widgets/drawer_mobile.dart';
 import '../widgets/header_mobile.dart';
 import '../widgets/main_mobile.dart';
@@ -58,77 +59,21 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 //
-                // // const MainDesktop(),
-                // if (constraints.maxWidth >= kMinDesktopWidth)
-                //   const MainDesktop()
-                // else
-                //   const MainMobile(),
-                // // SKILLS
-                // if(constraints.maxWidth >= kMinDesktopWidth)
-                //   const SkillsDesktop()
-                // else
-                //   const SkillsMobile(),
-                //
-                // // PROJECTS
-                // const ProjectsSection(),
-                // // CONTACT
-                Container(
-                    padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
-                    color: Colors.blueGrey,
-                    child: Column(
-                      children: [
-                        const Text(
-                          "Get in touch",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: Colors.white),
-                        ),
-                        const SizedBox(height: 50),
-                        ConstrainedBox(
-                          constraints: const BoxConstraints(maxWidth: 700.0),
-                          child: const Row(
-                            children: [
-                              Flexible(
-                                  child: CustomTextfield(
-                                hintText: "Your Name",
-                              )),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Flexible(
-                                  child: CustomTextfield(
-                                hintText: "Your email",
-                              )),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        ConstrainedBox(
-                          constraints: const BoxConstraints(maxWidth: 700.0),
-                          child: const CustomTextfield(
-                            hintText: "Your message",
-                            maxLines: 20,
-                          ),
-                        ),
+                // const MainDesktop(),
+                if (constraints.maxWidth >= kMinDesktopWidth)
+                  const MainDesktop()
+                else
+                  const MainMobile(),
+                // SKILLS
+                if(constraints.maxWidth >= kMinDesktopWidth)
+                  const SkillsDesktop()
+                else
+                  const SkillsMobile(),
 
-                        // send button
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        ConstrainedBox(
-                          constraints: const BoxConstraints(maxWidth: 700.0),
-                          child: SizedBox(
-                            width: double.maxFinite,
-                            child: ElevatedButton(
-                                onPressed: () {},
-                                child: const Text("Get in touch")),
-                          ),
-                        ),
-                      ],
-                    )),
+                // PROJECTS
+                const ProjectsSection(),
+                // CONTACT
+                ContactSection(),
                 // FOOTER
                 Container(
                   height: 500,
@@ -140,3 +85,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
