@@ -15,6 +15,7 @@ import 'package:test_portfolio/widgets/skills_desktop.dart';
 import '../constants/size.dart';
 import '../widgets/contact_section.dart';
 import '../widgets/drawer_mobile.dart';
+import '../widgets/footer.dart';
 import '../widgets/header_mobile.dart';
 import '../widgets/main_mobile.dart';
 import '../widgets/project_card.dart';
@@ -65,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                 else
                   const MainMobile(),
                 // SKILLS
-                if(constraints.maxWidth >= kMinDesktopWidth)
+                if (constraints.maxWidth >= kMinDesktopWidth)
                   const SkillsDesktop()
                 else
                   const SkillsMobile(),
@@ -75,10 +76,7 @@ class _HomePageState extends State<HomePage> {
                 // CONTACT
                 const ContactSection(),
                 // FOOTER
-                Container(
-                  height: 500,
-                  width: double.maxFinite,
-                ),
+                const Footer(),
               ],
             ));
       },
