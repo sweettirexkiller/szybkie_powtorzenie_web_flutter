@@ -5,7 +5,8 @@ import '../constants/nav_items.dart';
 
 
 class DrawerMobile extends StatelessWidget {
-  const DrawerMobile({super.key});
+  const DrawerMobile({super.key, required this.onNavTap});
+  final Function(int) onNavTap;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class DrawerMobile extends StatelessWidget {
                 contentPadding: const EdgeInsets.symmetric(
                     horizontal: 30, vertical: 10),
                 leading: Icon(navIcons[i]),
-                onTap: (){},
+                onTap: (){onNavTap(i);},
                 title: Text(
                   navTitles[i],
                   style: const TextStyle(

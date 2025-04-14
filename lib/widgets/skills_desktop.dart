@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../constants/skill_items.dart';
 
 class SkillsDesktop extends StatelessWidget {
-  const SkillsDesktop({super.key});
+  SkillsDesktop({super.key});
 
   @override
   Widget build(BuildContext context) {
